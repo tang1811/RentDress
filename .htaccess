@@ -1,0 +1,17 @@
+# RentDress - Apache Configuration
+
+# Enable mod_rewrite
+RewriteEngine On
+
+# Handle Vue Router history mode (for dist folder)
+RewriteCond %{REQUEST_FILENAME} !-f
+RewriteCond %{REQUEST_FILENAME} !-d
+RewriteCond %{REQUEST_URI} ^/RentDress/dist/
+RewriteRule ^dist/(.*)$ dist/index.html [L]
+
+# CORS Headers
+<IfModule mod_headers.c>
+    Header always set Access-Control-Allow-Origin "*"
+    Header always set Access-Control-Allow-Methods "GET, POST, PUT, DELETE, OPTIONS"
+    Header always set Access-Control-Allow-Headers "Content-Type, Authorization"
+</IfModule>

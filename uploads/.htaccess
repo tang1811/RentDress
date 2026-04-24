@@ -1,0 +1,16 @@
+# Allow access to image files
+<IfModule mod_headers.c>
+    Header set Access-Control-Allow-Origin "*"
+</IfModule>
+
+# Prevent PHP execution in uploads folder
+<FilesMatch "\.php$">
+    Order Deny,Allow
+    Deny from All
+</FilesMatch>
+
+# Allow only image files
+<FilesMatch "\.(jpg|jpeg|png|gif|webp)$">
+    Order Allow,Deny
+    Allow from All
+</FilesMatch>
